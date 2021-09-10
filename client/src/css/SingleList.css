@@ -4,3 +4,33 @@
   justify-content: center;
   align-items: center;
 }
+.home-btn {
+  background: none;
+  border: 1px solid #04aa6d;
+  font-size: 18px;
+  background-color: #04aa6d;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  text-decoration: none;
+  padding: 14px 25px;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+.home-btn:hover {
+  border: 1px solid rgb(32, 32, 32);
+  background-color: #035839;
+  color: white;
+}
+.edit-submit-btn {
+  width: 100%;
+  border: none;
+  background: none;
+  background-color: #04aa6d;
+  font-size: 18px;
+  margin-top: 0.5rem;
+}
+.edit-submit-btn:hover {
+  color: white;
+  background-color: #035839;
+}

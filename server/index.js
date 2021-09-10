@@ -19,7 +19,7 @@ const url = "mongodb://localhost/MernListProject";
 const PORT = process.env.PORT || 3001;
 const app = express();
 const list = require("./routes/lists");
-
+const notFound = require("./middleware/not-found");
 mongoose.connect(url, { useNewUrlParser: true });
 const con = mongoose.connection;
 
@@ -30,7 +30,9 @@ con.on("open", () => {
 //middleware
 app.use(express.json());
 
+//routes
 app.use("/api/v1/list", list);
+app.use(notFound);
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);

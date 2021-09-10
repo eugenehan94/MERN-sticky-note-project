@@ -1,8 +1,30 @@
+.title {
+  text-align: center;
+}
 .input-container {
   display: flex;
   justify-content: center;
 }
-
+.input-errorMessage {
+  background-color: rgba(255, 0, 0, 0.815);
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+/* .input-btn-wrapper {
+} */
+.input-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  background-color: #04aa6d;
+  cursor: pointer;
+  width: 100%;
+}
+.input-btn:hover {
+  color: white;
+  background-color: #035839;
+}
 .stickyNote-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { IconContext } from "react-icons";
 import "./css/App.css";
+import Loading from "./components/Loading";
 
 function App() {
   const [data, setData] = useState([]);
@@ -34,6 +35,7 @@ function App() {
 
     fetchData();
     setInput("");
+    return setErrorMessage("Successfully added");
   };
 
   //Call Node to DELETE data to MondoDB
@@ -53,20 +55,22 @@ function App() {
   }, []);
 
   useEffect(() => {
-    setTimeout(() => setErrorMessage(""), 3000);
+    const timeout = setTimeout(() => setErrorMessage(""), 3000);
+
+    return () => {
+      clearTimeout(timeout);
+    };
   }, [errorMessage]);
 
   if (loading) {
-    return (
-      <div>
-        <h1>Undefined data</h1>
-        <p>Waiting for fetch</p>
-      </div>
-    );
+    return <Loading />;
   }
 
   return (
     <div>
+      <div className="title">
+        <h1>Bulletin Board</h1>
+      </div>
       <div className="input-container">
         <form onSubmit={handleSubmit}>
           <textarea
@@ -78,9 +82,11 @@ function App() {
             cols="30"
             rows="5"
           ></textarea>
-          <div>{errorMessage && `${errorMessage}`}</div>
-          <div>
-            <input type="submit" value="Add" />
+          <div className="input-errorMessage">
+            {errorMessage && `${errorMessage}`}
+          </div>
+          <div className="input-btn-wrapper">
+            <input type="submit" value="Add" className="input-btn" />
           </div>
         </form>
       </div>

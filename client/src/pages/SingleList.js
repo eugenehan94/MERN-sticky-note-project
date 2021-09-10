@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import Loading from "../components/Loading";
 import "../css/SingleList.css";
 const SingleList = () => {
   const { id } = useParams();
@@ -15,9 +16,6 @@ const SingleList = () => {
     setLoading(false);
   };
   const patchData = async (input) => {
-    if (input === input) {
-      return setErrorMessage("Input was not changed");
-    }
     if (input === "") {
       return setErrorMessage("Input must be provided");
     }
@@ -28,7 +26,9 @@ const SingleList = () => {
     });
     const data = response.json();
     fetchSingleData();
+
     setInput(data);
+    return setErrorMessage("Change successful");
   };
 
   const handleSubmit = (e) => {
@@ -40,21 +40,23 @@ const SingleList = () => {
   }, []);
 
   useEffect(() => {
-    setTimeout(() => setErrorMessage(""), 3000);
+    const timeout = setTimeout(() => setErrorMessage(""), 3000);
+    return () => {
+      clearTimeout(timeout);
+    };
   }, [errorMessage]);
 
   if (loading) {
-    return (
-      <div>
-        <h1>Loading results</h1>
-      </div>
-    );
+    return <Loading />;
   }
 
   return (
     <div className="singleSticky-container">
       <h1>Edit Sticky Note</h1>
-      <Link to="/">Home</Link>
+
+      <Link to="/" className="home-btn">
+        Home
+      </Link>
 
       <form onSubmit={handleSubmit}>
         <textarea
@@ -65,9 +67,11 @@ const SingleList = () => {
           cols="50"
           rows="15"
         ></textarea>
-        <div>{errorMessage && `${errorMessage}`}</div>
+        <div className="input-errorMessage">
+          {errorMessage && `${errorMessage}`}
+        </div>
         <div>
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Submit" className="edit-submit-btn" />
         </div>
       </form>
     </div>
