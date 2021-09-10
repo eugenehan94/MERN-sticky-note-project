@@ -1,0 +1,38 @@
+.input-container {
+  display: flex;
+  justify-content: center;
+}
+
+.stickyNote-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  /* background-color: rgba(165, 39, 39, 0.596); */
+}
+.stickyNote {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.9);
+  background-color: rgb(248, 248, 35);
+}
+.stickyNote-btn-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+}
+.stickyNote-delete-btn {
+  cursor: pointer;
+  color: rgb(230, 50, 50);
+  font-size: 20px;
+  margin: 0.5rem;
+}
+.stickyNote-delete-btn:hover {
+  color: rgb(255, 0, 0);
+}
+.stickyNote-edit-btn {
+  color: rgb(104, 241, 104);
+  margin: 0.5rem;
+  font-size: 20px;
+}
+.stickyNote-edit-btn:hover {
+  color: rgb(0, 255, 0);
+}
