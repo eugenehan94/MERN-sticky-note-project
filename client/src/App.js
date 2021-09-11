@@ -25,12 +25,12 @@ function App() {
       return setErrorMessage("Input must be provided");
     }
 
-    const response = await fetch("/api/v1/list", {
+    await fetch("/api/v1/list", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify({ name: input }),
     });
-    const data = await response.json();
+    // const data = await response.json();
     // console.log(data.msg.errors.name.message);
 
     fetchData();
@@ -40,8 +40,8 @@ function App() {
 
   //Call Node to DELETE data to MondoDB
   const deleteData = async (id) => {
-    const response = await fetch(`/api/v1/list/${id}`, { method: "DELETE" });
-    const data = await response.json();
+    await fetch(`/api/v1/list/${id}`, { method: "DELETE" });
+    // const data = await response.json();
     fetchData();
   };
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useParams, Link } from "react-router-dom";
 import Loading from "../components/Loading";
 import "../css/SingleList.css";
@@ -8,13 +8,15 @@ const SingleList = () => {
   const [loading, setLoading] = useState(true);
   const [input, setInput] = useState();
   const [errorMessage, setErrorMessage] = useState("");
-  const fetchSingleData = async () => {
+
+  const fetchSingleData = useCallback(async () => {
     const response = await fetch(`/api/v1/list/${id}`);
     const data = await response.json();
 
     setData(data);
     setLoading(false);
-  };
+  }, [id]);
+
   const patchData = async (input) => {
     if (input === "") {
       return setErrorMessage("Input must be provided");
@@ -37,7 +39,7 @@ const SingleList = () => {
   };
   useEffect(() => {
     fetchSingleData();
-  }, []);
+  }, [fetchSingleData]);
 
   useEffect(() => {
     const timeout = setTimeout(() => setErrorMessage(""), 3000);
