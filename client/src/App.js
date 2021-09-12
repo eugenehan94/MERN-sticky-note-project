@@ -72,16 +72,20 @@ function App() {
         <h1>Bulletin Board</h1>
       </div>
       <div className="input-container">
-        <form onSubmit={handleSubmit}>
-          <textarea
-            type="text"
-            name="name"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="e.g Enter Message"
-            cols="30"
-            rows="5"
-          ></textarea>
+        <form onSubmit={handleSubmit} className="input-form-wrapper">
+          <div className="input-textarea-wrapper">
+            <textarea
+              type="text"
+              name="name"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="e.g Enter Message"
+              className="input-textarea"
+              // cols="30"
+              // rows="5"
+            ></textarea>
+          </div>
+
           <div className="input-errorMessage">
             {errorMessage && `${errorMessage}`}
           </div>

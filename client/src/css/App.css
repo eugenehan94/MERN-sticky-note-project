@@ -5,6 +5,20 @@
   display: flex;
   justify-content: center;
 }
+.input-form-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+}
+.input-textarea-wrapper {
+  width: 100%;
+  /* border: 1px solid black; */
+}
+.input-textarea {
+  width: 100%;
+  height: 150px;
+  box-sizing: border-box;
+}
 .input-errorMessage {
   background-color: rgba(255, 0, 0, 0.815);
   margin-bottom: 0.5rem;
@@ -57,4 +71,33 @@
 }
 .stickyNote-edit-btn:hover {
   color: rgb(0, 255, 0);
+}
+
+/*Desktop screen resize*/
+@media screen and (max-width: 900px) {
+  .stickyNote-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+/*Tablet and larger mobile devices*/
+@media screen and (max-width: 768px) {
+  .stickyNote-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Mobile Devices */
+@media screen and (max-width: 480px) {
+  .stickyNote-container {
+    grid-template-columns: 1fr;
+  }
+  .input-form-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+  }
+  .input-errorMessage {
+    margin-top: 0.5rem;
+  }
 }

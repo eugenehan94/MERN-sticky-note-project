@@ -59,23 +59,25 @@ const SingleList = () => {
       <Link to="/" className="home-btn">
         Home
       </Link>
-
-      <form onSubmit={handleSubmit}>
-        <textarea
-          type="text"
-          name="name"
-          defaultValue={data.name}
-          onChange={(e) => setInput(e.target.value)}
-          cols="50"
-          rows="15"
-        ></textarea>
-        <div className="input-errorMessage">
-          {errorMessage && `${errorMessage}`}
-        </div>
-        <div>
-          <input type="submit" value="Submit" className="edit-submit-btn" />
-        </div>
-      </form>
+      <div className="singleList-input-container">
+        <form onSubmit={handleSubmit}>
+          <textarea
+            type="text"
+            name="name"
+            defaultValue={data.name}
+            onChange={(e) => setInput(e.target.value)}
+            className="singleList-textarea"
+            // cols="50"
+            // rows="15"
+          ></textarea>
+          <div className="input-errorMessage">
+            {errorMessage && `${errorMessage}`}
+          </div>
+          <div>
+            <input type="submit" value="Submit" className="edit-submit-btn" />
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
