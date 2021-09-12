@@ -3,7 +3,6 @@ const router = express.Router();
 const List = require("../models/list");
 router.get("/", async (req, res) => {
   try {
-    console.log("GET - Try block accessed");
     const list = await List.find({});
     res.status(200).json({ list });
   } catch (error) {
